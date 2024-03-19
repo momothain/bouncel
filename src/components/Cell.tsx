@@ -1,10 +1,19 @@
-export default function Cell() {
-    // Set the size of each cell using width and height TailwindCSS classes
-    const cellStyle = 'border-10 border-gray-400'; // Adjust the size as needed
-
+interface CellProps {
+    size: string
+}
+export default function Cell({ size }: CellProps) {
+    const cellStyle = `
+        grid-item aspect-square
+        border-5 border-slate-500/50
+        bg-indigo-500/50
+`;
+    // w-${size} h-${size} 
     return (
-        <div className={cellStyle}>
-            {/* Content of the cell */}
+        <div
+            className={cellStyle}
+            style={{ width: size, height: size }} // Use inline styles to apply dynamic size
+        >
+
         </div>
     );
 };

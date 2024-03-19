@@ -13,7 +13,7 @@ export default function Home() {
     type: CellType.BALL,
   }]
   return (<div>
-    <Grid rows={6} cols={6} initGrid={initGrid} >
+    <Grid rows={4} cols={4} initGrid={initGrid} >
 
     </Grid>
 

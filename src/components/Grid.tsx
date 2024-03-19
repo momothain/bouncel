@@ -12,19 +12,22 @@ interface GridProps {
 }
 
 export default function Grid({ rows, cols, initGrid }: GridProps) {
-    // The grid container style
-    const styleGrid =
-        `grid grid-rows-${rows} grid-cols-${cols}
-        divide-x divide-y border-5 border-gray-300
-        relative h-screen w-full`
+    const style =
+        " grid-container "
+        + ` bg-sky=500-75 `
+        + " h-screen w-screen "
+        + ` grid grid-cols-${cols} divide-x border-10 border-black-500/80 `
+        + ` grid-rows-${rows} divide-y `
 
-    // You don't need to create a 2D array since you're just filling the grid with cells
+    const cellSize = `calc(100vh / ${Math.max(rows, cols)})`; // Making sure the size is based on the larger of rows or cols for a square grid
     const cells = Array.from({ length: rows * cols }, (_, index) => (
-        <Cell key={index} /> // Render the Cell component
+        <Cell size={cellSize} key={index} />
     ));
 
+
+
     return (
-        <div className={styleGrid}>
+        <div className={style}>
             {cells}
         </div>
     );
