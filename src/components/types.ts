@@ -1,4 +1,4 @@
-export enum CellType {
+export enum ObjType {
     EMPTY,
     BALL
 
@@ -6,16 +6,16 @@ export enum CellType {
 
 export type Position = [number, number];
 
-export interface CellProps {
+export interface ObjProps {
     id: number;
     position: Position;
 }
-export interface CellState {
-    props: CellProps;
-    type: CellType; // Use the CellType enum
+export interface ObjState {
+    props: ObjProps;
+    type: ObjType; // Use the CellType enum
 }
 
-export type GridState = CellState[];
+export type GridState = ObjState[];
 
 
 

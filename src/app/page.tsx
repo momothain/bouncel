@@ -1,21 +1,25 @@
 //app/page.tsx
 "use client"
 import Grid from '@/components/Grid'
-import { GridState, CellType } from '@/components/types'
+import { GridState, ObjType } from '@/components/types'
 
 
 export default function Home() {
   const initGrid: GridState = [{
     props: {
       id: 1,
-      position: [3, 3],
+      position: [1, 2],
     },
-    type: CellType.BALL,
+    type: ObjType.BALL,
   }]
   return (<div>
-    <Grid rows={4} cols={4} initGrid={initGrid} >
-
+    <div>
+      <h1>bouncel</h1>
+      <h2>size: ..</h2>
+      <h2>system: ..</h2>
+    </div>
+    <Grid rows={3} cols={5} initGrid={initGrid}>
     </Grid>
-
-  </div>)
+    <p>current score: ..</p>
+  </div >)
 }
