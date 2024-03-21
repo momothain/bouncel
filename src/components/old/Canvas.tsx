@@ -1,4 +1,4 @@
-import { GridState } from "@/components/types"
+import { GridState } from "../Grid"
 import Ball from "../Ball"
 import Cell from "../Cell"
 import { useEffect, useRef, useState } from "react"

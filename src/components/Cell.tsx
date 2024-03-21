@@ -6,7 +6,7 @@ interface CellProps {
     style?: object
 }
 export default function Cell({ children, size, style = {} }: CellProps) {
-    const cellStyle = `
+    const tw = `
         grid-item aspect-square
         border-5 border-slate-500/50
         bg-indigo-500/50
@@ -14,10 +14,10 @@ export default function Cell({ children, size, style = {} }: CellProps) {
     // w-${size} h-${size} 
     return (
         <div
-            className={cellStyle}
+            className={tw}
             style={{
                 ...style, width: size, height: size, paddingBottom: '100%', // This creates a square aspect ratio
-                background: 'lightgrey',
+                // background: 'lightgrey',
             }} // Use inline styles to apply dynamic size
         >{children}</div>
     );

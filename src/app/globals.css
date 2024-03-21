@@ -2,71 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Light color scheme */
-:root {
-    --color-beige: 245, 245, 220;
-    --color-sepia: 112, 66, 20;
-    --color-gold: 212, 175, 55;
-    --color-white: 255, 255, 255;
-    --color-light-gray: 250, 250, 250;
-    /* Dark color scheme */
-    --color-dark-beige: 32, 32, 29;
-    --color-dark-sepia: 245, 222, 179;
-    --color-dark-gold: 138, 117, 37;
-    --color-black: 0, 0, 0;
-    --color-dark-gray: 43, 43, 43;
-}
-
-body {
-    color: rgb(var(--color-sepia));
-    background-color: rgb(var(--color-beige));
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Dark mode styles */
-.dark-mode {
-    color: rgb(var(--color-dark-sepia));
-    background-color: rgb(var(--color-dark-beige));
-}
-
-@layer components {
-    .btn {
-        @apply py-2 px-4 font-semibold rounded-lg shadow-md transition-colors;
+/* Custom base styles using Tailwind's layer directive */
+@layer base {
+    html {
+        height: 100%;
     }
 
-    .btn-gold {
-        @apply text-white bg-[rgb(var(--color-gold))] hover:bg-[rgb(var(--color-gold))] hover:bg-opacity-90;
+    body {
+        @apply bg-black text-white min-h-screen flex flex-col items-center justify-center;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Nonsans-serif", sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+/* Custom component styles */
+@layer components {
+    .btn {
+        @apply px-4 py-2 font-semibold rounded-md transition-colors duration-300 ease-in-out;
     }
 
     .btn-sepia {
-        @apply text-white bg-[rgb(var(--color-sepia))] hover:bg-[rgb(var(--color-sepia))] hover:bg-opacity-90;
+        @apply bg-amber-600 hover:bg-amber-700;
     }
 
-    /* Dark mode button styles */
-    .dark-mode .btn-gold {
-        @apply bg-[rgb(var(--color-dark-gold))] hover:bg-[rgb(var(--color-dark-gold))] hover:bg-opacity-90;
+    /* Define styles for headings with hierarchy */
+    h1 {
+        @apply text-4xl font-bold border-b-4 border-yellow-300 mb-4;
     }
 
-    .dark-mode .btn-sepia {
-        @apply bg-[rgb(var(--color-dark-sepia))] hover:bg-[rgb(var(--color-dark-sepia))] hover:bg-opacity-90;
+    h2 {
+        @apply text-3xl font-semibold border-b-2 border-yellow-300 mb-3;
+    }
+
+    h3 {
+        @apply text-2xl font-semibold mb-2;
+    }
+
+    h4 {
+        @apply text-xl font-medium mb-2;
+    }
+
+    h5 {
+        @apply text-lg font-medium mb-1;
+    }
+
+    h6 {
+        @apply text-base font-medium;
     }
 }
 
+/* Custom utility styles */
 @layer utilities {
-    .fill-sepia {
-        fill: rgb(var(--color-sepia));
+    .text-accent {
+        color: rgb(var(--accent-color));
     }
 
-    .stroke-gold {
-        stroke: rgb(var(--color-gold));
+    .bg-accent {
+        background-color: rgb(var(--accent-color));
     }
 
-    /* Dark mode utility classes */
-    .dark-mode .fill-sepia {
-        fill: rgb(var(--color-dark-sepia));
+    .fill-accent {
+        fill: rgb(var(--accent-color));
     }
 
-    .dark-mode .stroke-gold {
-        stroke: rgb(var(--color-dark-gold));
+    .stroke-accent {
+        stroke: rgb(var(--accent-color));
+    }
+}
+
+/* Light theme overrides */
+.light {
+    body {
+        @apply bg-gray-200 text-gray-800;
+    }
+
+    .btn-sepia {
+        @apply bg-amber-300 text-gray-800 hover:bg-amber-400;
+    }
+
+    h1 {
+        @apply border-yellow-500;
+    }
+
+    h2 {
+        @apply border-yellow-500;
     }
 }

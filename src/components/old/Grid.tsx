@@ -2,7 +2,8 @@
 "use client"
 import React, { useState } from 'react'
 import Ball from '@/components/Ball'
-import { ObjType, GridState } from "../types"
+import { ObjType } from "../types"
+import { GridState } from "../Grid"
 import Cell from '../Cell'
 
 interface GridProps {

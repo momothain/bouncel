@@ -1,58 +1,74 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cell from './Cell';
-import { GridState, ObjType, Position } from './types';
 import Ball from './Ball';
 
+export type Position = [number, number];
+export enum ObjType {
+    EMPTY,
+    BALL
+
+} 1
+export interface ObjState {
+    id: string;
+    position?: Position;
+    type: ObjType;
+}
+export type GridState = ObjState[];
+
 interface GridProps {
-    rows: number
-    cols: number
-    initGrid: GridState
+    rows: number;
+    cols: number;
+    initGrid: GridState;
 }
 
 export default function Grid({ rows, cols, initGrid }: GridProps) {
-    const [gridState, setGridState] = useState<GridState>(initGrid)
+    const debug = true
+    const [gridState, setGridState] = useState<GridState>(initGrid);
 
+    // Create a grid array for rendering
+    const cellComponents = Array.from({ length: rows }, () => new Array(cols).fill(null));
 
-    const cells = Array.from({ length: rows * cols }); // create an array for the grid cells
-    const cellSize = `calc(100vw / ${Math.max(rows, cols)})`; // Making sure the size is based on the larger of rows or cols for a square grid
-
-    return (
-        <div style={{
-            display: 'grid',
-            gridTemplateColumns: `repeat(${cols}, 1fr)`,
-            gridTemplateRows: `repeat(${rows}, 1fr)`,
-            gap: '1px',
-            width: '100vw',
-            height: `calc(100vw * ${rows} / ${cols})`,
-            margin: 'auto',
-        }}>
-            {cells.map((_, index) => {
-                const x = index % cols;
-                const y = Math.floor(index / cols);
-
-
-                // Find if there is a gameObject for this cell
-                const obj = gridState.find(o => o.type! - ObjType.EMPTY && o.props.position[0] === x && o.props.position[1] === y);
-
-                let elt: ReactNode;
-                {
-                    (() => {
-                        switch (obj?.type) {
-                            case ObjType.EMPTY:
-                                elt = null
-                            case ObjType.BALL:
-                                elt = <Ball id={obj.props.id} position={obj.props.position}></Ball>
-                            default:
-                                throw new Error("you invented a new physics element. nice.");
-                        }
-                    })()
-                }
-
-                return (<Cell key={index} size={cellSize}>{elt}</Cell>)
-            })
+    // dependciess
+    let grid;
+    useEffect(() => {
+        grid = gridState.map(obj => {
+            let cellComponent;
+            switch (obj.type) {
+                case ObjType.EMPTY:
+                    cellComponent = null;
+                case ObjType.BALL:
+                    cellComponent = <Ball />;
+                default:
+                    throw new Error("You invented a new physics element. Nice.");
+            };
+            if (cellComponent) {
+                const [x, y] = obj.position;
+                cellComponents[y][x] = cellComponent;
             }
-        </div >
-    );
-}
+        }, [gridState]);
 
+        const cellSize = `calc(100vw / ${Math.max(rows, cols)})`; // Adjust cell size based on grid dimensions
 
+        return (
+            <div className="flex flex-col ">
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${cols}, 1fr)`,
+                    gridTemplateRows: `repeat(${rows}, 1fr)`,
+                    gap: '1px',
+                    width: '100vw',
+                    height: `calc(100vw * ${rows} / ${cols})`,
+                    margin: 'auto',
+                }}>
+                    {cellComponents.flatMap((row, rowIndex) =>
+                        row.map((cellContent, colIndex) => (
+                            <Cell key={`${rowIndex}-${colIndex}`} size={cellSize}>
+                                {cellContent}
+                            </Cell>
+                        ))
+                    )}
+                </div>
+                );
+            </div>
+        )
+    }
