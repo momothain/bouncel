@@ -3,13 +3,13 @@
 import React, { useState } from 'react'
 import Ball from '@/components/Ball'
 import { ObjType } from "../types"
-import { GridState } from "../Grid"
+import { ObjState[] } from "../Grid"
 import Cell from '../Cell'
 
 interface GridProps {
     rows: number
     cols: number
-    initGrid: GridState
+    initGrid: ObjState[]
 }
 
 export default function Grid({ rows, cols, initGrid }: GridProps) {

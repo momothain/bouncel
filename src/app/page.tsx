@@ -4,14 +4,14 @@ import Grid from '@/components/Grid';
 import Obj from '@/components/Obj';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { ObjType } from '@/components/types';
-import { GridState } from "@/components/Grid";
+import { ObjState[] } from "@/components/Grid";
 
 
 export default function Home() {
     const DEBUG = true
     const rows = 3;
     const cols = 5;
-    const initGrid: GridState = [{
+    const initGrid: ObjState[] = [{
         props: {
             id: '1',
             position: [1, 2],

@@ -1,4 +1,4 @@
-import { GridState } from "../Grid"
+import { ObjState[] } from "../Grid"
 import Ball from "../Ball"
 import Cell from "../Cell"
 import { useEffect, useRef, useState } from "react"
@@ -7,7 +7,7 @@ import { drawBg } from "@/canvas-draw/grid"
 interface GridProps {
     rows: number
     cols: number
-    initGrid: GridState
+    initGrid: ObjState[]
 }
 export default function Canvas({ rows, cols, initGrid }: GridProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
