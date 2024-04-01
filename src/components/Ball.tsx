@@ -1,7 +1,7 @@
-import { ObjProps } from './types';
+import { ElementPropsBase } from "./GridMemo";
 
-export default function Ball({ id }: ObjProps) {
-    const tw = `
+export default function Ball({ id }: ElementPropsBase) {
+  const tw = `
         w-full h-full                 /* Height and width of parent */
         bg-yellow-400                 /* Gold background color */
         rounded-full                  /* Makes the div a circle */
@@ -10,5 +10,5 @@ export default function Ball({ id }: ObjProps) {
         text-white font-bold          /* Style for the text inside the ball */
     `;
 
-    return <div id={id} className={tw}></div>
+  return <div id={id} className={tw}></div>;
 }
