@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import { Position } from "./Grid";
 interface CellProps {
-    children: ReactNode
+    children?: ReactNode
     pos: Position
     size: string
     style?: object
 }
-export default function Cell({ children, pos, size, style = {} }: CellProps) {
+export default function Cell({ children = null, pos, size, style = {} }: CellProps) {
     const tw = `
         grid-item aspect-square
         border-5 border-slate-500/50

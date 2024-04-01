@@ -1,21 +1,19 @@
 "use client";
 import Ball from '@/components/Ball';
 import Grid from '@/components/Grid';
-import Obj from '@/components/Obj';
+// import Obj from '@/components/Obj';
 import { useTheme } from '@/components/providers/ThemeProvider';
-import { ObjType } from '@/components/types';
-import { ObjState[] } from "@/components/Grid";
+import { ObjType } from '@/components/Grid';
+import { EltState } from "@/components/Grid";
 
 
 export default function Home() {
     const DEBUG = true
     const rows = 3;
     const cols = 5;
-    const initGrid: ObjState[] = [{
-        props: {
-            id: '1',
-            position: [1, 2],
-        },
+    const initGrid: EltState[] = [{
+        id: '1',
+        position: [1, 2],
         type: ObjType.BALL,
     }];
 
@@ -42,8 +40,10 @@ export default function Home() {
 
             {/*  */}
             {DEBUG
-                ? (<div className="w-full flex justify-center"><Ball id={initGrid[0].props.id} position={initGrid[0].props.position} ></Ball>
-                    <Obj {...initGrid[0]}></Obj></div>)
+                ? (<div className="w-full flex justify-center">
+                    <Ball id={initGrid[0].id} position={initGrid[0].position} ></Ball>
+                </div>
+                )
                 : null
             }
         </div>
