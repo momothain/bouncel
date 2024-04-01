@@ -1,0 +1,11 @@
+/* Grid Component styles */
+.grid-container {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    gap: 1px;
+    margin: auto;
+}
