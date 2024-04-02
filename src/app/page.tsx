@@ -2,26 +2,31 @@
 // import Obj from '@/components/Obj';
 import { useTheme } from "@/components/providers/ThemeProvider";
 
-import GridMemo, { ElementState, ElementType } from "@/components/GridMemo";
-import { CellProps } from "@/components/GridMemo";
+import Grid from "@/components/Grid";
+import { ElementState, ElementType, GridProps } from "@/types";
+
+const DEBUG = true;
+const rows = 3;
+const cols = 5;
+const initEltStates: ElementState[] = [
+    {
+        pos: [1, 2],
+        type: ElementType.BALL,
+        props: { id: "BALL" },
+    },
+];
 
 export default function Home() {
-    const DEBUG = true;
-    const rows = 3;
-    const cols = 5;
-    const ess: ElementState[] = [
-        {
-            pos: [1, 2],
-            type: ElementType.BALL,
-            props: { id: "BALL" },
-        },
-    ];
-    const gridProps = { rows: rows, cols: cols, initEltStates: ess };
+    const gridProps: GridProps = {
+        rows: rows,
+        cols: cols,
+        initEltStates: initEltStates,
+    };
 
     const { theme, toggleTheme } = useTheme();
 
     return (
-        <div className={`light flex flex-col`}>
+        <div className={`${theme} flex flex-col`}>
             {/* header */}
             <div
                 className={`flex flex-col items-center justify-center
@@ -51,7 +56,7 @@ export default function Home() {
                     margin: "auto",
                 }}
             >
-                <GridMemo rows={rows} cols={cols} initEltStates={ess} />
+                <Grid {...gridProps} />
             </div>
         </div>
     );

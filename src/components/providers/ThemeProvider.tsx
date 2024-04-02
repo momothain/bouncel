@@ -1,5 +1,11 @@
-'use client'
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+"use client";
+import React, {
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+    ReactNode,
+} from "react";
 
 // Define the shape of the context data
 interface ThemeContextType {
@@ -9,8 +15,8 @@ interface ThemeContextType {
 
 // Provide a default value for the context
 const ThemeContext = createContext<ThemeContextType>({
-    theme: 'light', // or 'dark', depending on your default theme
-    toggleTheme: () => { }, // Just an empty function as a placeholder
+    theme: "light", // or 'dark',
+    toggleTheme: () => {},
 });
 
 // Type for the props of ThemeProvider
@@ -19,17 +25,21 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-    const [theme, setTheme] = useState<string>('light');
+    const [theme, setTheme] = useState<string>("light");
 
     useEffect(() => {
-        const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const storedTheme =
+            localStorage.getItem("theme") ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light");
         setTheme(storedTheme);
     }, []);
 
     const toggleTheme = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
+        const newTheme = theme === "light" ? "dark" : "light";
         setTheme(newTheme);
-        localStorage.setItem('theme', newTheme);
+        localStorage.setItem("theme", newTheme);
     };
 
     return (
@@ -42,7 +52,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 export function useTheme() {
     const context = useContext(ThemeContext);
     if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider');
+        throw new Error("useTheme must be used within a ThemeProvider");
     }
     return context;
 }

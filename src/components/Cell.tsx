@@ -1,31 +1,29 @@
-import { ReactNode } from "react";
-import { Position } from "./Grid";
-import { CellProps, ElementType } from "@/components/GridMemo";
+import { CellProps } from "../types";
 import React from "react";
-import Ball from "./Ball";
-// interface CellProps {
-//     children?: ReactNode
-//     pos: Position
-//     size: string
-//     style?: object
-// }
+import { useTheme } from "./providers/ThemeProvider";
+
 export default function Cell({ pos, size, children }: CellProps) {
-    const tw = `
-        grid-item aspect-square
+    const { theme } = useTheme();
+    const backgroundColor = theme === "light" ? "bg-cyan-500/90" : "bg-indigo-900/75"; // Example colors
+
+    const style = {
+        gridRow: 1 + pos[0], // technically redundant right now but feels like good practice
+        gridColumn: 1 + pos[1],
+        width: size,
+        height: size,
+        paddingBottom: "100%", // This creates a square aspect ratio
+    };
+
+    const tw = `aspect-square
         border-5 border-slate-500/50
-        bg-indigo-900/75
+        ${backgroundColor}
 `;
     // w-${size} h-${size}
 
     return (
         <div
             className={tw}
-            style={{
-                width: size,
-                height: size,
-                paddingBottom: "100%", // This creates a square aspect ratio
-                // background: "lightgrey",
-            }} // Use inline styles to apply dynamic size
+            style={style} // Use inline styles to apply dynamic size
         >
             {children}
         </div>
