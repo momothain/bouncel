@@ -10,24 +10,24 @@ import Ball from "./Ball";
 //     style?: object
 // }
 export default function Cell({ pos, size, children }: CellProps) {
-  const tw = `
+    const tw = `
         grid-item aspect-square
         border-5 border-slate-500/50
-        bg-indigo-500/50
+        bg-indigo-900/75
 `;
-  // w-${size} h-${size}
+    // w-${size} h-${size}
 
-  return (
-    <div
-      className={tw}
-      style={{
-        width: size,
-        height: size,
-        paddingBottom: "100%", // This creates a square aspect ratio
-        // background: 'lightgrey',
-      }} // Use inline styles to apply dynamic size
-    >
-      {children}
-    </div>
-  );
+    return (
+        <div
+            className={tw}
+            style={{
+                width: size,
+                height: size,
+                paddingBottom: "100%", // This creates a square aspect ratio
+                // background: "lightgrey",
+            }} // Use inline styles to apply dynamic size
+        >
+            {children}
+        </div>
+    );
 }

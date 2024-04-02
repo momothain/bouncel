@@ -765,6 +765,54 @@ h6 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
+.bg-indigo-300\/50 {
+  background-color: rgb(165 180 252 / 0.5);
+}
+.bg-indigo-400\/50 {
+  background-color: rgb(129 140 248 / 0.5);
+}
+.bg-indigo-600\/50 {
+  background-color: rgb(79 70 229 / 0.5);
+}
+.bg-indigo-600\/80 {
+  background-color: rgb(79 70 229 / 0.8);
+}
+.bg-indigo-600\/90 {
+  background-color: rgb(79 70 229 / 0.9);
+}
+.bg-indigo-600\/10 {
+  background-color: rgb(79 70 229 / 0.1);
+}
+.bg-indigo-600\/100 {
+  background-color: rgb(79 70 229 / 1);
+}
+.bg-indigo-500\/60 {
+  background-color: rgb(99 102 241 / 0.6);
+}
+.bg-indigo-500\/55 {
+  background-color: rgb(99 102 241 / 0.55);
+}
+.bg-indigo-600\/55 {
+  background-color: rgb(79 70 229 / 0.55);
+}
+.bg-indigo-600\/60 {
+  background-color: rgb(79 70 229 / 0.6);
+}
+.bg-indigo-700\/70 {
+  background-color: rgb(67 56 202 / 0.7);
+}
+.bg-indigo-800\/70 {
+  background-color: rgb(55 48 163 / 0.7);
+}
+.bg-indigo-900\/70 {
+  background-color: rgb(49 46 129 / 0.7);
+}
+.bg-indigo-900\/80 {
+  background-color: rgb(49 46 129 / 0.8);
+}
+.bg-indigo-900\/75 {
+  background-color: rgb(49 46 129 / 0.75);
+}
 .font-bold {
   font-weight: 700;
 }

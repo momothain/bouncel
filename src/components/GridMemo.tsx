@@ -11,6 +11,8 @@ function posEquals(v1: Position, v2: Position) {
 export enum ElementType {
     EMPTY,
     BALL,
+    WALL,
+    USER,
 }
 
 export type ID = string;
@@ -68,7 +70,22 @@ export default function Grid({ rows, cols, initEltStates }: GridProps) {
             return <MemoizedCell {...props}></MemoizedCell>;
         }
         // Initialize the grid with null values
-        const gridArray: ReactNode[] = Array.from({ length: rows * cols }, () => null);
+        const gridArray: ReactNode[] = Array.from(
+            { length: rows * cols },
+            (_, index) => {
+                const pos: Position = [Math.floor(index / cols), index % rows];
+                const cellProps: CellProps = {
+                    pos: pos,
+                    size: cellSize,
+                    children: (
+                        <h2>
+                            `{[pos[0]]},{pos[1]}`
+                        </h2>
+                    ),
+                };
+                return renderCell(cellProps);
+            },
+        );
 
         eltStates.forEach(({ pos, type, props }) => {
             const gridIndex: number = pos[0] * cols + pos[1];
