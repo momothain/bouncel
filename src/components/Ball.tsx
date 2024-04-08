@@ -1,6 +1,6 @@
-import { ElementPropsBase } from "../types";
+import { ElementProps } from "@/types/element-types";
 
-export default function Ball({ id }: ElementPropsBase) {
+export default function Ball({ id }: ElementProps) {
     const tw = `
         w-full h-full                 /* Height and width of parent */
         bg-yellow-400                 /* Gold background color */

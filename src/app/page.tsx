@@ -3,7 +3,8 @@
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 import Grid from "@/components/Grid";
-import { ElementState, ElementType, GridProps } from "@/types";
+import { BouncelType } from "@/types/types";
+import { ElementState, GridProps } from "@/types/element-types";
 
 const DEBUG = true;
 const rows = 3;
@@ -11,7 +12,7 @@ const cols = 5;
 const initEltStates: ElementState[] = [
     {
         pos: [1, 2],
-        type: ElementType.BALL,
+        type: BouncelType.BALL,
         props: { id: "BALL" },
     },
 ];

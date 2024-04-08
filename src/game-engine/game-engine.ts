@@ -1,58 +1,64 @@
-// GameEngine.ts
-import { GID, GameObjectType as TYPE, Vector, Velocity, GameObject, GridSize, GridState } from "./types"
+import { BouncelType, Vector } from "@/types/types";
 
-export class GameEngine {
-  private gridSize: GridSize = [12, 12]
-  private objects: GridState = []
-  private velocities: Map<string, Vector> = new Map()
+interface ObjectState {
+  id: string;
+  pos: Vector;
+  vel: Vector; // Should velocity be a Position type or should there be a separate Velocity type?
+  mass: boolean; // Should mass be a boolean?
+}
 
-  addObject = (type: TYPE, props: any) => {
-    const obj = createGameObject(type, props)
-    this.objects.push(obj)
-    this.velocities.set(obj.id, { x: 0, y: 0 })
+interface EngineProps {
+  rows: number;
+  cols: number;
+  initObjStates?: ObjectState[];
+}
+
+export class Engine {
+  private rows: number;
+  private cols: number;
+  private objStates: ObjectState[];
+  private velocities: Map<string, Vector> = new Map(); // Assuming Position is correct for velocity
+
+  constructor({ rows, cols, initObjStates }: EngineProps) {
+    this.rows = rows;
+    this.cols = cols;
+    if (initObjStates) {
+      this.objStates = initObjStates;
+    } else {
+      this.objStates = []
+    }
+    // Initialize objects or other properties as needed
+  }
+  
+  instantiateObject(type: BouncelType, props: ObjectState) {
+    switch (type) {
+      case BALL:
+        
+        break;
+    
+      default:
+        break;
+    }
+
+  }
+  addObject(type: TYPE, props: any) { // TYPE needs to be defined, and props should have a type
+    const obj = createGameObject(type, props);
+    this.objStates.push(obj);
+    this.velocities.set(obj.id, { x: 0, y: 0 });
   }
 
-  updateVelocity = (id: string, velocity: Vector) => {
-    this.velocities.set(id, velocity)
+  updateVelocity(id: string, velocity: Vector) { // Ensure Position is the right type for velocity
+    this.velocities.set(id, velocity);
   }
 
-  update = (delta: number) => {
-    this.objects.forEach((obj) => {
-      const velocity = this.velocities.get(obj.id)!
+  update(delta: number) {
+    this.objStates.forEach((obj) => {
+      const velocity = this.velocities.get(obj.id)!;
       // Update object position based on velocity and delta
       // Check for collisions
       // Update velocities for next frame
-    })
+    });
   }
 }
 
-class Ball implements GameObject {
-  type = TYPE.BALL
-  id: string
-  position: Vector
-  velocity: Velocity
-  moveInterval: number
-  moveCountdown: number
-  gravity: number
-  elasticity: number
-
-  constructor(
-    id: string,
-    position: Vector,
-    velocity: Velocity,
-    moveInterval: number,
-    moveCountdown: number,
-    gravity: number,
-    elasticity: number
-  ) {
-    this.id = id
-    this.position = position
-    this.velocity = velocity
-    this.moveInterval = moveInterval
-    this.moveCountdown = moveCountdown
-    this.gravity = gravity
-    this.elasticity = elasticity
-  }
-
-}
-
+// Assuming Ball and other types like TYPE, GameObject are defined elsewhere

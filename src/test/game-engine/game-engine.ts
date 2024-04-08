@@ -1,5 +1,5 @@
-import { GameEngine } from '@/game-engine/game-engine'
-const engine = new GameEngine()
+import { Engine } from '@/game-engine/game-engine'
+const engine = new Engine()
 export default engine
 
 function createGameObject(type: TYPE, props: any) {

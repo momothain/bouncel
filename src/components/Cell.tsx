@@ -1,4 +1,4 @@
-import { CellProps } from "../types";
+import { CellProps } from "@/types/element-types";
 import React from "react";
 import { useTheme } from "./providers/ThemeProvider";
 
