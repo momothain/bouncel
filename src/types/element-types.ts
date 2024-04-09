@@ -1,3 +1,4 @@
+// GPL-3.0-or-later © Copyleft 2024 momothain, Morgann Thain
 import { ID, Vector, BouncelType } from "./types";
 
 import { ReactElement, ReactNode } from "react";
