@@ -47,3 +47,7 @@ next-env.d.ts
 .next/build-manifest.json
 .next/app-build-manifest.json
 /.next/cache/webpack
+.next/trace
+/.next
+.next/server/server-reference-manifest.json
+.next/server/server-reference-manifest.js
