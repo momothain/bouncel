@@ -11,3 +11,7 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+# © Copyleft
+
+This code is released under GPL-3.0-or-later Copyright © 2024 momothain, Morgann Thain. see 'COPYING' or 'LICENSE' for details.
