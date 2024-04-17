@@ -51,3 +51,4 @@ next-env.d.ts
 /.next
 .next/server/server-reference-manifest.json
 .next/server/server-reference-manifest.js
+pnpm-lock.yaml
