@@ -69,14 +69,14 @@ export class Engine {
 
     renderObject(type: BouncelType, state: ObjectState) {
         switch (type) {
-            case BouncelType.EMPTY:
+            case EMPTY:
                 return null;
-            case BouncelType.BALL:
+            case BALL:
                 const props: ElementProps = { id: state.id };
                 return Ball(props);
-            case BouncelType.WALL:
+            case WALL:
                 break;
-            case BouncelType.USER:
+            case USER:
                 break;
             default:
                 throw new TypeError();
@@ -94,14 +94,14 @@ export class Engine {
             // Update object position based on velocity and delta
             const nextPos = this.nextPos(obj.pos, obj.vel);
             // Check for collisions
-            const obstacle = this.cells[nextPos[0], nextPos[1]]
-            if (obstacle) {
-              // collide changes velocities to apply 
-            //   also moves them and ends their tick turn?
-              obj.collide(obstacle);
-            } else {
-              this.moveObject(obj)
-            }
+            // const obstacle = this.cells[nextPos[0], nextPos[1]]
+            // if (obstacle) {
+            //   // collide changes velocities to apply 
+            // //   also moves them and ends their tick turn?
+            //   obj.collide(obstacle);
+            // } else {
+            //   this.moveObject(obj)
+            // }
         });
     }
 }
