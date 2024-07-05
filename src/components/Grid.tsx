@@ -1,14 +1,16 @@
+// GPL-3.0-or-later © Copyleft 2024 momothain, Morgann Thain
 import React, { useState, useEffect, useMemo, ReactNode } from "react";
 import Cell from "./Cell";
 import Ball from "./Ball";
 import {
+    BouncelType,
+    Vector,
+} from "../types/types";
+import {
     GridProps,
-    ElementState,
-    ElementType,
-    ElementProps,
-    CellProps,
-    Position,
-} from "../types";
+    ElementState, ElementProps,
+    CellProps
+} from "@/types/element-types";
 
 export default function Grid({ rows, cols, initEltStates }: GridProps) {
     const [eltStates, setEltStates] = useState<ElementState[]>(initEltStates);
@@ -17,11 +19,11 @@ export default function Grid({ rows, cols, initEltStates }: GridProps) {
     const MemoizedCell = React.memo(Cell);
 
     const grid: ReactNode[] = useMemo(() => {
-        function renderElement(type: ElementType, props: ElementProps): ReactNode {
+        function renderElement(type: BouncelType, props: ElementProps): ReactNode {
             switch (type) {
-                case ElementType.EMPTY:
+                case BouncelType.EMPTY:
                     return null;
-                case ElementType.BALL:
+                case BouncelType.BALL:
                     // Assert that eltProps is not undefined when elementType is BALL
                     if (!props)
                         throw new Error("Element props are required for BALL type");
@@ -38,7 +40,7 @@ export default function Grid({ rows, cols, initEltStates }: GridProps) {
         const gridArray: ReactNode[] = Array.from(
             { length: rows * cols },
             (_, index) => {
-                const pos: Position = [Math.floor(index / cols), index % cols];
+                const pos: Vector = [Math.floor(index / cols), index % cols];
                 const cellProps: CellProps = {
                     pos: pos,
                     size: cellSize,

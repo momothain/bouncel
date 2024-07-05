@@ -1,4 +1,4 @@
-import { CellProps } from "../types";
+import { CellProps } from "@/types/element-types";
 import React from "react";
 import { useTheme } from "./providers/ThemeProvider";
 
@@ -11,7 +11,8 @@ export default function Cell({ pos, size, children }: CellProps) {
         gridColumn: 1 + pos[1],
         width: size,
         height: size,
-        paddingBottom: "100%", // This creates a square aspect ratio
+        "box-sizing": "border-box",
+        // paddingBottom: "100%", // This creates a square aspect ratio
     };
 
     const tw = `aspect-square

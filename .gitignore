@@ -12,6 +12,12 @@ node_modules
 
 # next.js
 /.next/
+.next
+.next/
+.next/*
+.next/cache
+.next/cache/
+.next/cache/*
 /out/
 
 # production
@@ -37,3 +43,12 @@ yarn-error.log*
 next-env.d.ts
 
 *storybook.log
+/.next
+.next/build-manifest.json
+.next/app-build-manifest.json
+/.next/cache/webpack
+.next/trace
+/.next
+.next/server/server-reference-manifest.json
+.next/server/server-reference-manifest.js
+pnpm-lock.yaml
